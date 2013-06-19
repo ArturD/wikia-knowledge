@@ -1,0 +1,3 @@
+// Spring Roo 1.2.3.RELEASE [rev 7fd62b6] log opened at 2013-06-19 21:16:12
+project --topLevelPackage net.wikia.knowledge
+jpa setup --provider HIBERNATE --database HYPERSONIC_IN_MEMORY
