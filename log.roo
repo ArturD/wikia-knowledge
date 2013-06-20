@@ -1,3 +1,25 @@
 // Spring Roo 1.2.3.RELEASE [rev 7fd62b6] log opened at 2013-06-19 21:16:12
 project --topLevelPackage net.wikia.knowledge
 jpa setup --provider HIBERNATE --database HYPERSONIC_IN_MEMORY
+// Spring Roo 1.2.3.RELEASE [rev 7fd62b6] log opened at 2013-06-20 16:57:24
+jpa setup --provider HIBERNATE --database HYPERSONIC_IN_MEMORY
+entity jpa --class ~.domain.Entity --testAutomatically --activeRecord false --table entity
+field number --fieldName relevance --notNull --type java.lang.Float --primitive
+field string --fieldName type --notNull --sizeMax 25
+field string --fieldName name --notNull --sizeMax 256
+entity jpa --class ~.domain.EntityCollection --testAutomatically --activeRecord false --table entity_set
+field number --fieldName wikiId --type java.lang.Integer --notNull --column wiki_id --min 0 --digitsInteger 10 --digitsFraction 0 --primitive
+field number --fieldName pageId --type java.lang.Integer --notNull --column page_id --min 0 --digitsInteger 10 --digitsFraction 0 --primitive
+field number --fieldName editorId --type java.lang.Integer --column editor_id --min 0 --digitsInteger 10 --digitsFraction 0
+field string --fieldName pageTitle --notNull --sizeMax 255 --column page_title
+field string --fieldName classifierName --notNull --sizeMax 60 --column classifier_name
+field date --fieldName dateCreated --column date_created --type java.util.Date
+field number --fieldName quality --type java.lang.Float --primitive
+field boolean --fieldName humanVerified --column human_verified --notNull --primitive --class ~.domain.EntityCollection
+field set --fieldName entities --type Entity --cardinality ONE_TO_MANY
+json add --deepSerialize
+repository jpa --interface ~.repository.EntityCollectionRepository --entity ~.domain.EntityCollection
+web mvc json setup
+web mvc json all --package ~.controllers
+perform tests
+web mvc json all --package ~.controllers
