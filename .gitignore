@@ -1,0 +1,7 @@
+# Ignore InteliJ IDEA project files  since we want project to be IDE agnostic
+.idea/
+*.iml
+
+# ignore build artifacts
+target/
+
